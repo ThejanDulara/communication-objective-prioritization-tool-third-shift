@@ -10,7 +10,7 @@ export async function checkAuth() {
 
   const portalBase = isLocal
     ? "http://localhost:5173"
-    : "https://portal.thirdshiftmedia.agency";
+    : "https://thirdshiftmedia.agency";
 
   try {
     const response = await fetch(`${apiBase}/auth/me`, {
