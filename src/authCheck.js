@@ -22,14 +22,16 @@ export async function checkAuth() {
       const current = encodeURIComponent(window.location.href);
       // ✅ always redirect to the official sign-in page on 'www'
       window.location.href = `${portalBase}/signin?redirect=${current}`;
-      return;
+      return false; // 🚫 not authorized
     }
 
     const user = await res.json();
     console.log("✅ Authenticated user:", user);
+    return true; // ✅ authorized
   } catch (err) {
     console.error("❌ Auth check failed:", err);
     const current = encodeURIComponent(window.location.href);
     window.location.href = `${portalBase}/signin?redirect=${current}`;
+    return false;
   }
 }
